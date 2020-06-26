@@ -6,6 +6,13 @@
 </head>
 <body>
     <script>
+        let pScore = 0;
+        let cScore = 0;
+        
+
+        // Your game is going to play against the computer, so begin with a function called computerPlay that 
+        // will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. We’ll use this function in the game to 
+        // make the computer’s play.
         function computerPlay(rock, paper, scissors) {
             choiceSelection = [
                 'rock',
@@ -17,19 +24,94 @@
             return(computerSelected)
         }
 
+        // Use prompt() to get input from the user
+        function playerPlay() {
+           let playerInput;
+            while((playerInput != 'rock' && playerInput != 'paper' & playerInput != 'scissors')) {
+                playerInput = prompt('rock? paper? or scissors?', '');
+                if (!(playerInput === null || playerInput === '')) {
+                    playerInput = playerInput.toLowerCase();
+                }
+            }
+            return playerInput;
+            
+            }
+            
+
+        playerPlay();
+        
+        let result;
+
+        // Write a function that plays a single round of Rock Paper Scissors. The function should take two 
+        // parameters - the playerSelection and computerSelection - and then return a string that declares 
+        // the winner of the round like so: "You Lose! Paper beats Rock"
 
         function playRound(playerSelection, computerSelection) {
-            switch (playRound) {
-                case playerSelection == 'rock' && computerSelection == 'paper' :
-                case playerSelection == 'paper' && computerSelection == 'scissors' :
-                case playerSelection == 'scissors' && computerSelection == 'rock' :
-                return `You Lose! ${computerSelection} beats ${playerSelection}`
+
+            if (playerSelection == computerSelection) {
+             result = `it's a tie! you both picked ${[playerSelection]}`  
+            }
+
+            if (playerSelection == 'rock') {
+                if (computerSelection == 'paper') {
+                    cScore++
+                    result = 'you lose! paper beats rock';
+                } else {
+                    pScore++
+                    result = 'you win! rock beats scissors';
+                }
+            } 
+
+            if (playerSelection == 'paper') {
+                if (computerSelection == 'scissors') {
+                    cScore++
+                    result = 'you lose! scissors beats paper';
+                } else {
+                    pScore++
+                    result = 'you win! paper beats rock';
+                }
+            }
+
+            if (playerSelection == 'scissors') {
+                if (computerSelection == 'rock') {
+                    cScore++
+                    result = 'you lose! rock beats scissors';
+                } else {
+                    pScore++
+                    result = 'you win! scissors beats paper'
+                }
             }
         }
+        
+        // Write a NEW function called game(). Use the previous function inside of this one to 
+        // play a 5 round game that keeps score and reports a winner or loser at the end.
 
-        const playerSelection = 'rock'
-        const computerSelection = 'paper'
-        console.log(playRound(playerSelection, computerSelection))
+        function game() {
+            let round = 0;
+            while (round < 5) {
+                let playerSelection = playerPlay();
+                let computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+                console.log(`player score: ${pScore}, computer score: ${cScore}`);
+                console.log(`you picked: ${playerSelection}, and computer picked: ${computerSelection}, ${result}`);
+                round++
+            }
+            
+            if (pScore > cScore) {
+                console.log('you win!')
+            } else {
+                console.log('you lose!')
+            }
+
+        }
+
+        
+        game();
+        
+        
+
+  
+        
 
         
     </script>
