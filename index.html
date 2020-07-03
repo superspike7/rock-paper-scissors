@@ -3,16 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Rock Paper Scissors</title>
+
+    
 </head>
 <body>
-    <script>
-        let pScore = 0;
-        let cScore = 0;
-        
 
-        // Your game is going to play against the computer, so begin with a function called computerPlay that 
-        // will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. We’ll use this function in the game to 
-        // make the computer’s play.
+    <div class="score-board">
+        <p>your score: 0</p>
+        <p>computer score: 0</p>
+    </div>
+
+
+    <div class="container buttons">
+        <button id="rock" onClick="reply_click(this.id)">Rock</button>
+        <button id="paper" onClick="reply_click(this.id)">Paper</button>
+        <button id="scissors" onClick="reply_click(this.id)"> Scissors</button>
+    </div>
+    
+    <div class="round">
+        <p>computer choose: ROCK!</p>
+        <p>you choose: PAPER!</p>
+        <p>You Lose! Rock beats Paper</p>
+    </div>
+
+
+    <script>    
+        // i don't know what this does
+        const btns = document.querySelectorAll('button');
+        btns.forEach((button) => {
+            button.addEventListener('click', playRound);
+        });
+
+
+
+        // player Input
+        function reply_click(clicked_id) {
+            return clicked_id;
+        }
+
+        // random number generator for computer
         function computerPlay(rock, paper, scissors) {
             choiceSelection = [
                 'rock',
@@ -24,96 +53,48 @@
             return(computerSelected)
         }
 
-        // Use prompt() to get input from the user
-        function playerPlay() {
-           let playerInput;
-            while((playerInput != 'rock' && playerInput != 'paper' & playerInput != 'scissors')) {
-                playerInput = prompt('rock? paper? or scissors?', '');
-                if (!(playerInput === null || playerInput === '')) {
-                    playerInput = playerInput.toLowerCase();
-                }
-            }
-            return playerInput;
             
-            }
-            
-
-        playerPlay();
-        
-        let result;
-
-        // Write a function that plays a single round of Rock Paper Scissors. The function should take two 
-        // parameters - the playerSelection and computerSelection - and then return a string that declares 
-        // the winner of the round like so: "You Lose! Paper beats Rock"
-
-        function playRound(playerSelection, computerSelection) {
+        // check and play each round who wins
+        function playRound(e) {
+            playerSelection = reply_click;
+            computerSelection = computerPlay();
 
             if (playerSelection == computerSelection) {
-             result = `it's a tie! you both picked ${[playerSelection]}`  
+             result = `it's a tie! you both picked ${playerSelection}`  
             }
 
             if (playerSelection == 'rock') {
                 if (computerSelection == 'paper') {
                     cScore++
-                    result = 'you lose! paper beats rock';
+                    result = 'lose';
                 } else {
                     pScore++
-                    result = 'you win! rock beats scissors';
+                    result = 'win';
                 }
             } 
 
             if (playerSelection == 'paper') {
                 if (computerSelection == 'scissors') {
                     cScore++
-                    result = 'you lose! scissors beats paper';
+                    result = 'lose';
                 } else {
                     pScore++
-                    result = 'you win! paper beats rock';
+                    result = 'win';
                 }
             }
 
             if (playerSelection == 'scissors') {
                 if (computerSelection == 'rock') {
                     cScore++
-                    result = 'you lose! rock beats scissors';
+                    result = 'lose';
                 } else {
                     pScore++
-                    result = 'you win! scissors beats paper'
+                    result = 'win';
                 }
             }
         }
-        
-        // Write a NEW function called game(). Use the previous function inside of this one to 
-        // play a 5 round game that keeps score and reports a winner or loser at the end.
-
-        function game() {
-            let round = 0;
-            while (round < 5) {
-                let playerSelection = playerPlay();
-                let computerSelection = computerPlay();
-                playRound(playerSelection, computerSelection);
-                console.log(`player score: ${pScore}, computer score: ${cScore}`);
-                console.log(`you picked: ${playerSelection}, and computer picked: ${computerSelection}, ${result}`);
-                round++
-            }
-            
-            if (pScore > cScore) {
-                console.log('you win!')
-            } else {
-                console.log('you lose!')
-            }
-
-        }
-
-        
-        game();
-        
-        
-
-  
-        
-
-        
+       
+             
     </script>
 </body>
 </html>
