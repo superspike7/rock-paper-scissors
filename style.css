@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --win-color: rgb(0, 255, 85);
+    --lose-color: rgb(196, 15, 15);
+}
+
+section {
+    height: 100vh;
+    background-color: darkslategrey;
+    font-family: sans-serif;
+    color: rgb(207, 202, 202);
+}
+
+.score {
+    display: flex;  
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    height: 20vh;
+    padding: 10px;
+}
+
+.buttons {
+    height: 20vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+}
+
+.round {
+    height: 20vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.computer-choose, .player-choose{
+    padding: 20px;
+}
+
+.computer-choose {
+    margin-top: 20px;
+}
+
+.text-win {
+    color: var(--win-color);
+}
+
+.text-lose {
+    color: var(--lose-color);
+}
+
+.result {
+    height: 10vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}

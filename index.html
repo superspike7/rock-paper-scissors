@@ -3,98 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Rock Paper Scissors</title>
-
-    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="score-board">
-        <p>your score: 0</p>
-        <p>computer score: 0</p>
+<section>
+    <div class="score">
+        <div id="score" class="player-score">
+            <h2>Player</h2>
+            <p>0</p>
+        </div>
+        <div id="score" class="computer-score">
+            <h2>computer</h2>
+            <p>0</p>
+        </div>
     </div>
 
-
-    <div class="container buttons">
-        <button id="rock" onClick="reply_click(this.id)">Rock</button>
-        <button id="paper" onClick="reply_click(this.id)">Paper</button>
-        <button id="scissors" onClick="reply_click(this.id)"> Scissors</button>
+    <div class="buttons">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
     </div>
     
     <div class="round">
-        <p>computer choose: ROCK!</p>
-        <p>you choose: PAPER!</p>
-        <p>You Lose! Rock beats Paper</p>
+        <div class="player">
+            <h3>You:</h3>
+            <p class="text-player">Paper</p>
+        </div>
+        <div class="computer">
+            <h3>Computer:</h3>
+            <p class="text-computer">Rock</p>
+        </div>
+        </div>
     </div>
 
+    <div id="result" class="result">
+        <h2 class="text-win">You Win!</h2>
+</section>
 
-    <script>    
-        // i don't know what this does
-        const btns = document.querySelectorAll('button');
-        btns.forEach((button) => {
-            button.addEventListener('click', playRound);
-        });
+<script src="main.js"></script>
 
-
-
-        // player Input
-        function reply_click(clicked_id) {
-            return clicked_id;
-        }
-
-        // random number generator for computer
-        function computerPlay(rock, paper, scissors) {
-            choiceSelection = [
-                'rock',
-                'paper',
-                'scissors'
-            ]
-            randomSelector = Math.floor(Math.random()*choiceSelection.length);
-            computerSelected = choiceSelection[randomSelector];
-            return(computerSelected)
-        }
-
-            
-        // check and play each round who wins
-        function playRound(e) {
-            playerSelection = reply_click;
-            computerSelection = computerPlay();
-
-            if (playerSelection == computerSelection) {
-             result = `it's a tie! you both picked ${playerSelection}`  
-            }
-
-            if (playerSelection == 'rock') {
-                if (computerSelection == 'paper') {
-                    cScore++
-                    result = 'lose';
-                } else {
-                    pScore++
-                    result = 'win';
-                }
-            } 
-
-            if (playerSelection == 'paper') {
-                if (computerSelection == 'scissors') {
-                    cScore++
-                    result = 'lose';
-                } else {
-                    pScore++
-                    result = 'win';
-                }
-            }
-
-            if (playerSelection == 'scissors') {
-                if (computerSelection == 'rock') {
-                    cScore++
-                    result = 'lose';
-                } else {
-                    pScore++
-                    result = 'win';
-                }
-            }
-        }
-       
-             
-    </script>
-</body>
 </html>
