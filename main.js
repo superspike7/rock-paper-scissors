@@ -105,6 +105,7 @@ function showWinner(winner) {
 
 //restart game
 function restartGame() {
+    restart.style.display = "none";
     scoreboard.player = 0
     scoreboard.computer = 0
     scoreboard.round = 0
