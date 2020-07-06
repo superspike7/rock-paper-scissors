@@ -5,6 +5,8 @@ const result = document.querySelector('#result');
 const restart = document.querySelector('.restart');
 const roundContainer = document.querySelector('.round');
 const roundcount = document.querySelector('.round-count')
+const playerText = document.querySelector('.text-player');
+const computerText = document.querySelector('.text-computer');
 const scoreboard = {
     player: 0,
     computer: 0,
@@ -19,7 +21,8 @@ function play(e) {
     const choicePlayer = e.target.id;
     const choiceComputer = getComputerChoice();
     const winner = checkWinner(choicePlayer, choiceComputer);
-    showWinner(winner);
+    showWinner(winner, choicePlayer);
+    console.log(choicePlayer)
 }
 
 // random number generator for computer
@@ -36,6 +39,13 @@ function getComputerChoice(rock, paper, scissors) {
 
 // check and play each round who wins
 function checkWinner(playerSelection, computerSelection) {
+    playerText.innerHTML = `
+    <h3>You:</h3>
+    <i class="choice nob far fa-hand-${playerSelection} fa-3x"></i>`;
+    computerText.innerHTML = `
+    <h3>Computer:</h3>
+    <i class="choice nob far fa-hand-${computerSelection} fa-3x"></i>`;
+
 
     if (playerSelection == computerSelection) {
     return 'draw';  
@@ -64,27 +74,35 @@ function checkWinner(playerSelection, computerSelection) {
             return 'win';
         }
     }
+    
 }
 
-// add the scoreboard to the Ui
-function showWinner(winner) {
+// add the scoreboard to the UI
+function showWinner(winner, playerSelection) {
     if (winner === 'win') {
+        scoreboard.round++;
         scoreboard.player++;
         result.innerHTML = `
         <h2 class="text-win"> You WIN! </h2>
         `;
     } else if (winner === 'lose') {
+        scoreboard.round++;
         scoreboard.computer++;
         result.innerHTML = `
         <h2 class="text-lose"> You LOSE! </h2>
         `;
-    } else {
+    } else if (playerSelection === "") {
         result.innerHTML = `
-        <h2 class="text-tie"> it's a TIE </h2>
+        <h2 class="text-tie"> choose your weapon </h2>
+        `;
+    } else {
+        scoreboard.round++;
+        result.innerHTML = `
+        <h2 class="text-tie"> It's a tie! </h2>
         `;
     }
 
-    scoreboard.round++;
+    
     roundcount.innerHTML = `
     <h2 id="round-count">ROUND ${scoreboard.round} </h2>
     `;
@@ -98,6 +116,7 @@ function showWinner(winner) {
     <h2>Computer</h2>
     <p> ${scoreboard.computer} <p>
     `;
+
     if (scoreboard.round >= 5) {
         restart.style.display = "inline-block";
     }

@@ -116,3 +116,7 @@ button {
 .score p {
     font-size: 3em;
 }
+
+.nob {
+    border: none;
+}
