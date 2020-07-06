@@ -25,7 +25,43 @@ section {
     padding: 10px;
 }
 
-.buttons {
+.choices {
+    height: 30vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.choice {
+    border: white 1px solid;
+    border-radius: 50%;
+    padding: 0.2em;
+}
+
+.choice {
+    cursor: pointer;
+}
+
+.choice:hover {
+    font-size: 10em;
+}
+
+.restart-container {
+    text-align: center;
+}
+
+.restart {
+    font-size: 3.5em;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.restart:hover {
+    font-size: 4em;
+}
+
+/* .buttons {
     height: 20vh;
     display: flex;
     justify-content: space-around;
@@ -36,12 +72,12 @@ button {
     border-radius: 50%;
     height: 80px;
     width: 80px;
-}
+} */
 
 .round {
     height: 20vh;
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
     text-align: center;
 }
@@ -62,9 +98,21 @@ button {
     color: var(--lose-color);
 }
 
+.text-tie {
+    color: rgb(255, 230, 0)
+}
+
 .result {
     height: 10vh;
     padding: 20px;
     display: flex;
     justify-content: center;
+}
+
+.round, .restart, .result {
+    display: none;
+}
+
+.score p {
+    font-size: 3em;
 }

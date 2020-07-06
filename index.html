@@ -3,26 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Rock Paper Scissors</title>
+    <script src="https://kit.fontawesome.com/5ead69b894.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <section>
     <div class="score">
-        <div id="score" class="player-score">
+        <div id="score-player" class="player-score">
             <h2>Player</h2>
             <p>0</p>
         </div>
-        <div id="score" class="computer-score">
+        <div id="score-computer" class="computer-score">
             <h2>computer</h2>
             <p>0</p>
         </div>
     </div>
 
-    <div class="buttons">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+    <div class="choices">
+        <i id="rock" class="choice far fa-hand-rock fa-6x"></i>
+        <i id="paper" class="choice far fa-hand-paper fa-6x"></i>
+        <i id="scissors" class="choice far fa-hand-scissors fa-6x"></i>
+
     </div>
     
     <div class="round">
@@ -30,15 +32,21 @@
             <h3>You:</h3>
             <p class="text-player">Paper</p>
         </div>
+        <div class="round-count">
+            <h2 id="round-count">ROUND 1</h2>
+        </div>
         <div class="computer">
             <h3>Computer:</h3>
             <p class="text-computer">Rock</p>
         </div>
-        </div>
     </div>
 
-    <div id="result" class="result">
-        <h2 class="text-win">You Win!</h2>
+    <div class="restart-container">
+    <i id="restart" class="restart fas fa-redo-alt"> restart</i>
+    </div>
+
+    <div id="result" class="result"></div>
+
 </section>
 
 <script src="main.js"></script>
